@@ -53,8 +53,8 @@
                     </select>
 
                     <label class="block text-sm font-medium text-white">Skills: </label>
-                    <input type="text" v-model="tempSkill" @keyup="addSkill" placeholder="Enter your skills" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"/>
-                    <div v-for="skill in skills" :key="skill" @mousedown="removeSkill" class="mt-2 rounded-md bg-gray-200 px-2 py-1 text-md text-gray-700 mr-2 mb-2 inline-block">
+                    <input type="text" v-model="tempSkill" @keyup="addSkill" placeholder="Enter your skills" class=" mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"/>
+                    <div v-for="skill in skills" :key="skill" @mousedown="removeSkill" class=" mt-2 rounded-md bg-gray-200 px-2 py-1 text-md text-gray-700 mr-2 mb-2 inline-block">
                         {{ skill }}
                     </div>
                 </div>
@@ -119,6 +119,12 @@ export default {
                 email: this.email,
                 password: this.password
             });
+
+            this.passwordError = this.password.length < 7 ? 'Password must be at least 8 characters long' : '';
+            if (this.passwordError) {
+                alert(this.passwordError);
+                return;
+            }
         },
         addSkill(e) {
             let tempSkill = this.tempSkill.slice(0, -1);
